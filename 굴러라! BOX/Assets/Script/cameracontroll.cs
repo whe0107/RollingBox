@@ -8,7 +8,7 @@ public class cameracontroll : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-        this.player = GameObject.Find("box");
+        this.player = GameObject.Find("Box");
 	}
 	
 	// Update is called once per frame
