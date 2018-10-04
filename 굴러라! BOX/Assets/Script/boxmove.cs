@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class boxmove : MonoBehaviour
 {
-
-    public float JumpPower = 15;
+    public int HP = 100;
+    float MoveSpeed = 0.02f;
+    float RotateAngle = 1.8f;
+    public float JumpPower = 30;
     int KeyInputCheck = 0;
     int RightLeftDistinction = 0;//좌우판별
     int BoxRotation = 1;//박스의 회전상태를 나타냄, 1일때 정지
@@ -53,20 +55,18 @@ public class boxmove : MonoBehaviour
         {
             KeyInputCheck = 0;
             rb.freezeRotation = true;
-            InvokeRepeating("BoxMove", 0, 0.01f);
+            InvokeRepeating("BoxMove", 0, 0.001f);
         }
 
     }
 
     void BoxMove()
     {
-        float MoveSpeed = 0.1f;
-        float RotateAngle = 3f;
         transform.position += new Vector3(RightLeftDistinction * MoveSpeed , 0, 0);//이동
         //transform.position += new Vector3(-RightLeftDistinction *0.00001f *BoxRotation*(-30*BoxRotation+1)*1.059378145028868f, 0, 0);
         this.transform.Rotate(new Vector3(0, 0, RightLeftDistinction * -RotateAngle));//회전
         BoxRotation++;
-        if(BoxRotation>30)
+        if(BoxRotation>50)
         {
             rb.freezeRotation = false;
             CancelInvoke();
